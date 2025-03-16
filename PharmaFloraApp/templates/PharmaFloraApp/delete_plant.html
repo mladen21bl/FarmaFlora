@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Plant</title>
+</head>
+<body>
+    <h2>Delete Plant</h2>
+    <p>Are you sure you want to delete {{ plant.name }}?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+        <a href="{% url 'plant_detail' pk=plant.pk %}">Cancel</a>
+    </form>
+</body>
+</html>

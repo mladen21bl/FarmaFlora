@@ -1,0 +1,74 @@
+{% extends 'PharmaFloraApp/base.html' %}
+<!DOCTYPE html>
+{% load static %}
+{% block title %}Pretraga Biljaka{% endblock %}
+
+{% block content %}
+    <form id="search-form" style="margin-bottom: 20px; margin-top: 3cm; text-align: center;">
+        <input type="text" name="q" placeholder="Pretraga po imenu biljke" style="padding: 10px; width: 300px; border-radius: 5px; border: 1px solid #ccc; font-size: 16px;" id="search-input">
+        <button type="submit" style="background-color: #5bc0de; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px;">Pretraži</button>
+    </form>
+
+    <!-- Rezultati pretrage -->
+    <h2 id="search-results-title" style="text-align: center; display: none; font-size: 24px; font-weight: bold; margin-bottom: 10px;">Rezultati:</h2>
+
+    <!-- Grid sa biljkama (početno sakriven) -->
+    <ul id="plant-list" class="grid grid-cols-2 gap-8" style="display: none;">
+        {% for plant in plants %}
+            <li class="plant-item">
+                {% if plant.image %}
+                    <img src="{{ plant.image.url }}" alt="{{ plant.name }}" style="width: 5cm; height: 5cm; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); margin: 0 auto;">
+                {% endif %}
+                <h2 class="text-3xl font-handwriting text-green-800 mt-4">
+                    <a href="{% url 'plant_detail' plant.pk %}">{{ plant.name }}</a>
+                    <span class="text-xl italic text-green-600">({{ plant.latin_name }})</span>
+                </h2>
+            </li>
+        {% empty %}
+            <li>Nema biljaka za prikaz.</li>
+        {% endfor %}
+    </ul>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const searchForm = document.getElementById('search-form');
+            const searchInput = document.getElementById('search-input');
+            const plantList = document.getElementById('plant-list');
+            const searchTitle = document.getElementById('search-results-title');
+
+            // Sprečavanje slanja forme
+            searchForm.addEventListener("submit", function(event) {
+                event.preventDefault(); // Zaustavlja ponovno učitavanje stranice
+                filterPlants();
+            });
+
+            searchInput.addEventListener('input', filterPlants);
+
+            function filterPlants() {
+                const query = searchInput.value.toLowerCase();
+                const plants = plantList.getElementsByTagName('li');
+                let hasResults = false;
+
+                for (let i = 0; i < plants.length; i++) {
+                    const plantName = plants[i].getElementsByTagName('h2')[0].innerText.toLowerCase();
+                    if (plantName.includes(query)) {
+                        plants[i].style.display = '';
+                        hasResults = true;
+                    } else {
+                        plants[i].style.display = 'none';
+                    }
+                }
+
+                // Prikazivanje rezultata
+                if (query && hasResults) {
+                    plantList.style.display = 'block';
+                    searchTitle.style.display = 'block';
+                } else {
+                    plantList.style.display = 'none';
+                    searchTitle.style.display = 'none';
+                }
+            }
+        });
+    </script>
+
+{% endblock %}

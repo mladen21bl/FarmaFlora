@@ -1,0 +1,240 @@
+{% extends 'PharmaFloraApp/base.html' %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+
+    {% block title %}Herbarijum - Lista Biljaka{% endblock %}
+    {% block content %}
+    <form method="get" action="{% url 'index' %}" style="margin-bottom: 20px;">
+    <div class="filter-container">
+        {% for category, indications in indication_categories.items %}
+        <fieldset class="filter-category">
+            <legend style="font-weight: bold; cursor: pointer;" onclick="toggleFilters('{{ category }}')">{{ category }}</legend>
+            <div id="filters-{{ category }}" class="filters" style="display: {% if category in open_categories %}block{% else %}none{% endif %};">
+                {% for indication in indications %}
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="indication"
+                           value="{{ indication }}" id="{{ indication }}"
+                           {% if indication in indications_filters %}checked{% endif %}>
+                    <label class="form-check-label" for="{{ indication }}">
+                        {{ indication|capfirst }}
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+        </fieldset>
+        {% endfor %}
+    </div>
+    <button type="submit" class="btn btn-info mt-3">Filtriraj po indikacijama</button>
+</form>
+
+
+    {% if query %}
+        <p>Pronađeno {{ page_obj.paginator.count }} biljaka za "{{ query }}".</p>
+    {% endif %}
+    {% if indication_filter %}
+        <p>Filtrirano po indikaciji: "{{ indication_filter }}".</p>
+    {% endif %}
+
+</head>
+<body>
+  <div class="max-w-4xl mx-auto py-10">
+      <h1 class="text-4xl font-handwriting text-center mb-10 text-green-900">Herbarijum - Lista Biljaka</h1>
+
+      <ul class="space-y-8">
+      {% for plant in page_obj %}
+          <li>
+              {% if plant.image %}
+                  <img src="{{ plant.image.url }}" alt="{{ plant.name }}">
+              {% endif %}
+              <h2 class="text-3xl font-handwriting text-green-800 mt-4">
+                  <a href="{% url 'plant_detail' plant.pk %}" class="plant-name">{{ plant.name }}</a>
+                  <span class="text-xl italic latin-name">({{ plant.latin_name }})</span>
+              </h2>
+          </li>
+      {% empty %}
+          <li>Nema biljaka za prikaz.</li>
+      {% endfor %}
+      </ul>
+
+      <div class="pagination text-center mt-10">
+          <span class="step-links">
+              {% if page_obj.has_previous %}
+                  <a href="?page=1">Prva</a>
+                  <a href="?page={{ page_obj.previous_page_number }}">Prethodna</a>
+              {% endif %}
+              <span class="current">
+                  Stranica {{ page_obj.number }} od {{ page_obj.paginator.num_pages }}
+              </span>
+              {% if page_obj.has_next %}
+                  <a href="?page={{ page_obj.next_page_number }}">Sledeća</a>
+                  <a href="?page={{ page_obj.paginator.num_pages }}">Poslednja</a>
+              {% endif %}
+          </span>
+      </div>
+
+      <div class="text-center mt-10">
+          <a href="{% url 'create_plant' %}" class="add-plant-btn">
+              Dodaj novu biljku
+          </a>
+      </div>
+  </div>
+
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <div style="margin-bottom: 20px;">
+        <a href="{% url 'delete_all_plants' %}">
+            <button style="
+                background-color: #d9534f;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: bold;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            ">Obriši sve biljke</button>
+        </a>
+    </div>
+</body>
+
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+
+        body {
+            background-color: #f4f1e1;
+            background-image: url("{% static 'images/old_paper_texture.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: 'Times New Roman', serif;
+            color: #4e4934;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #3d6e54;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        li {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #3d6e54;
+        }
+
+
+        img {
+            width: 5cm;
+            height: 5cm;
+            object-fit: cover;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+
+
+        a {
+            color: #3d6e54;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .add-plant-btn {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            text-align: center;
+            background-color: #3d6e54;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .add-plant-btn:hover {
+            background-color: #2d4e3c;
+        }
+
+        .text-green-800 {
+            color: #3d6e54;
+        }
+
+        .text-green-600 {
+            color: #4b8c49;
+        }
+
+        .text-xl {
+            font-size: 1.25rem;
+        }
+        .plant-name {
+            font-family: 'Courier New', 'Times New Roman', serif !important;
+            font-size: 2.5rem !important;
+            font-weight: bold;
+            color: #2e4d30 !important;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 0, 0, 0.2);
+            letter-spacing: 1px;
+            line-height: 1.4;
+            text-transform: capitalize;
+        }
+        .latin-name {
+            font-style: italic;
+            color: black;
+        }
+        .filter-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.filter-category {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+    </style>
+
+    <script>
+        function toggleFilters(category) {
+            var filterDiv = document.getElementById("filters-" + category);
+            if (filterDiv.style.display === "none" || filterDiv.style.display === "") {
+                filterDiv.style.display = "block";
+            } else {
+                filterDiv.style.display = "none";
+            }
+        }
+    </script>
+
+</html>
+{% endblock %}

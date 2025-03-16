@@ -1,0 +1,121 @@
+{% load static %}
+
+<style>
+
+    body {
+        background-image: url("{% static 'images/pozadina.jpg' %}");
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .plant-details {
+        font-family: 'Times New Roman', Times, serif;
+        background-color: #f8f9fa;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        max-width: 680px;
+        margin: auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 2;
+    }
+
+    .plant-details img {
+        width: 13cm;
+        height: 13cm;
+        object-fit: cover;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .plant-details p {
+        margin-bottom: 10px;
+        line-height: 1.6;
+    }
+
+    .plant-details strong {
+        font-weight: bold;
+    }
+
+    .delete-button {
+        background-color: #d9534f;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        margin-top: 20px;
+        display: inline-block;
+        text-decoration: none;
+    }
+
+    .edit-button {
+        background-color: #5bc0de;
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        margin-top: 10px;
+        display: inline-block;
+        text-decoration: none;
+    }
+
+    .back-link {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+        position: relative;
+    }
+
+    .back-link::before {
+        content: '\2190';
+        position: absolute;
+        left: 10px;
+    }
+
+    .back-link:hover {
+        background-color: #0056b3;
+        text-decoration: none;
+    }
+</style>
+
+<div class="plant-details">
+    {% if plant.image %}
+        <img src="{{ plant.image.url }}" alt="{{ plant.name }}">
+    {% else %}
+        <p>Nema slike za ovu biljku.</p>
+    {% endif %}
+
+    <p><strong>Opis:</strong> {{ plant.description }}</p>
+    <p><strong>Droga:</strong> {{ plant.drug }}</p>
+    <p><strong>Indikacije:</strong> {{ plant.indications }}</p>
+
+    <form action="{% url 'delete_plant' pk=plant.pk %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="delete-button">Izbriši biljku</button>
+    </form>
+
+    <a href="{% url 'edit_plant' pk=plant.pk %}" class="edit-button">Uredi biljku</a>
+
+    <a href="{% url 'index' %}" class="back-link">Nazad na listu biljaka</a>
+</div>
