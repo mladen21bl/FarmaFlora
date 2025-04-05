@@ -1,16 +1,8 @@
+{% extends "PharmaFloraApp/base.html" %}
 {% load static %}
 
+{% block content %}
 <style>
-
-    body {
-        background-image: url("{% static 'images/pozadina.jpg' %}");
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
-        height: 100vh;
-        margin: 0;
-    }
-
     .plant-details {
         font-family: 'Times New Roman', Times, serif;
         background-color: #f8f9fa;
@@ -116,6 +108,6 @@
     </form>
 
     <a href="{% url 'edit_plant' pk=plant.pk %}" class="edit-button">Uredi biljku</a>
-
     <a href="{% url 'index' %}" class="back-link">Nazad na listu biljaka</a>
 </div>
+{% endblock %}

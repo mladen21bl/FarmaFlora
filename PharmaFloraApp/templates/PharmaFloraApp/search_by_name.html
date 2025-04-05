@@ -4,41 +4,116 @@
 {% block title %}Pretraga Biljaka{% endblock %}
 
 {% block content %}
-    <form id="search-form" style="margin-bottom: 20px; margin-top: 3cm; text-align: center;">
-        <input type="text" name="q" placeholder="Pretraga po imenu biljke" style="padding: 10px; width: 300px; border-radius: 5px; border: 1px solid #ccc; font-size: 16px;" id="search-input">
-        <button type="submit" style="background-color: #5bc0de; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px;">Pretraži</button>
+    <style>
+        body {
+            background-color: #f4f1e1;
+            background-image: url("{% static 'images/old_paper_texture.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: 'Times New Roman', serif;
+            color: #4e4934;
+            padding: 20px;
+        }
+
+        #search-form {
+            margin-top: 3cm;
+        }
+
+        ul#plant-list {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        li.plant-item {
+            background: url("{% static 'images/parchment_texture2.jpg' %}") no-repeat center center;
+            background-size: cover;
+            padding: 60px;
+            border-radius: 20px;
+            text-align: center;
+            border: none;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            opacity: 0.95;
+        }
+
+        .plant-item img {
+            width: 7cm;
+            height: 7cm;
+            object-fit: contain;
+            background-color: transparent;
+            border-radius: 3px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+
+        .plant-item a {
+            font-family: 'Aniron', serif;
+            font-size: 1.7rem;
+            font-weight: bold;
+            color: #2e4d30;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 0, 0, 0.2);
+            letter-spacing: 1px;
+            line-height: 1.4;
+            text-transform: capitalize;
+            text-decoration: none;
+        }
+
+        .plant-item a:hover {
+            text-decoration: underline;
+        }
+
+        .plant-item .latin-name {
+            font-family: "Times New Roman";
+            font-style: italic;
+            color: black;
+            font-size: 1.2rem;
+        }
+    </style>
+
+    <form id="search-form" style="margin-bottom: 20px; text-align: center;">
+        <input type="text" name="q" placeholder="Pretraga po imenu biljke"
+               style="padding: 10px; width: 300px; border-radius: 5px; border: 1px solid #ccc; font-size: 16px;"
+               id="search-input">
+        <button type="submit"
+                style="background-color: #5bc0de; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px;">
+            Pretraži
+        </button>
     </form>
 
-    <!-- Rezultati pretrage -->
-    <h2 id="search-results-title" style="text-align: center; display: none; font-size: 24px; font-weight: bold; margin-bottom: 10px;">Rezultati:</h2>
+    <h2 id="search-results-title"
+        style="text-align: center; display: none; font-size: 24px; font-weight: bold; margin-bottom: 10px;">
+        Rezultati:
+    </h2>
 
-    <!-- Grid sa biljkama (početno sakriven) -->
-    <ul id="plant-list" class="grid grid-cols-2 gap-8" style="display: none;">
+    <ul id="plant-list">
         {% for plant in plants %}
             <li class="plant-item">
                 {% if plant.image %}
-                    <img src="{{ plant.image.url }}" alt="{{ plant.name }}" style="width: 5cm; height: 5cm; object-fit: cover; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); margin: 0 auto;">
+                    <img src="{{ plant.image.url }}" alt="{{ plant.name }}">
                 {% endif %}
-                <h2 class="text-3xl font-handwriting text-green-800 mt-4">
+                <h2 class="text-3xl text-green-800 mt-4">
                     <a href="{% url 'plant_detail' plant.pk %}">{{ plant.name }}</a>
-                    <span class="text-xl italic text-green-600">({{ plant.latin_name }})</span>
+                    <span class="latin-name">({{ plant.latin_name }})</span>
                 </h2>
             </li>
         {% empty %}
-            <li>Nema biljaka za prikaz.</li>
+            <li style="text-align:center;">Nema biljaka za prikaz.</li>
         {% endfor %}
     </ul>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             const searchForm = document.getElementById('search-form');
             const searchInput = document.getElementById('search-input');
             const plantList = document.getElementById('plant-list');
             const searchTitle = document.getElementById('search-results-title');
 
-            // Sprečavanje slanja forme
-            searchForm.addEventListener("submit", function(event) {
-                event.preventDefault(); // Zaustavlja ponovno učitavanje stranice
+            searchForm.addEventListener("submit", function (event) {
+                event.preventDefault();
                 filterPlants();
             });
 
@@ -59,9 +134,8 @@
                     }
                 }
 
-                // Prikazivanje rezultata
                 if (query && hasResults) {
-                    plantList.style.display = 'block';
+                    plantList.style.display = 'flex';
                     searchTitle.style.display = 'block';
                 } else {
                     plantList.style.display = 'none';
@@ -70,5 +144,4 @@
             }
         });
     </script>
-
 {% endblock %}
