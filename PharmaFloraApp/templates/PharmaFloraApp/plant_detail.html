@@ -5,11 +5,11 @@
 <style>
     .plant-details {
         font-family: 'Times New Roman', Times, serif;
-        background-color: #f8f9fa;
+        background: url("{% static 'images/parchment_texture2.jpg' %}") no-repeat center center;
         padding: 20px;
         border: 1px solid #ccc;
         border-radius: 8px;
-        max-width: 680px;
+        max-width: 880px;
         margin: auto;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         position: relative;
@@ -17,9 +17,9 @@
     }
 
     .plant-details img {
-        width: 13cm;
-        height: 13cm;
-        object-fit: cover;
+        width: 15cm;
+        height: 10cm;
+        object-fit: contain;
         margin-bottom: 20px;
         border: 1px solid #ccc;
         border-radius: 5px;
@@ -27,6 +27,7 @@
         margin-left: auto;
         margin-right: auto;
     }
+
 
     .plant-details p {
         margin-bottom: 10px;
