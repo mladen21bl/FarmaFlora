@@ -78,24 +78,21 @@
       <div class="pagination text-center mt-10">
           <span class="step-links">
               {% if page_obj.has_previous %}
-                  <a href="?page=1">Prva</a>
-                  <a href="?page={{ page_obj.previous_page_number }}">Prethodna</a>
+                  <a href="?page=1" class="pagination-link">Prva</a>
+                  <a href="?page={{ page_obj.previous_page_number }}" class="pagination-link">{{ page_obj.previous_page_number }}</a>
               {% endif %}
+
               <span class="current">
-                  Stranica {{ page_obj.number }} od {{ page_obj.paginator.num_pages }}
+                  <strong>{{ page_obj.number }}</strong> <!-- Aktuelna stranica boldovana -->
               </span>
+
               {% if page_obj.has_next %}
-                  <a href="?page={{ page_obj.next_page_number }}">Sledeća</a>
-                  <a href="?page={{ page_obj.paginator.num_pages }}">Poslednja</a>
+                  <a href="?page={{ page_obj.next_page_number }}" class="pagination-link">{{ page_obj.next_page_number }}</a>
+                  <a href="?page={{ page_obj.paginator.num_pages }}" class="pagination-link">Posljednja</a>
               {% endif %}
           </span>
       </div>
 
-      <div class="text-center mt-10">
-          <a href="{% url 'create_plant' %}" class="add-plant-btn">
-              Dodaj novu biljku
-          </a>
-      </div>
   </div>
 
     {% if messages %}
@@ -241,6 +238,41 @@
     border: 1px solid #ddd;
     padding: 10px;
     border-radius: 5px;
+}
+
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.pagination-link {
+    text-decoration: none;
+    padding: 15px 25px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    color: #333;
+    font-size: 32px; /* Povećali font za duplo */
+    transition: background-color 0.3s ease;
+}
+
+.pagination-link:hover {
+    background-color: #4e9b7b; /* Highlight efekat na hover */
+    color: white;
+}
+
+.current strong {
+    font-size: 36px; /* Povećali font za aktuelnu stranicu */
+    font-weight: bold;
+    color: #3d6e54;
+}
+
+.ellipsis {
+    font-size: 32px;
+    padding: 0 10px;
+    color: #333;
 }
 
     </style>
