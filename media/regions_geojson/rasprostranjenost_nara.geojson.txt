@@ -1,0 +1,49 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [17.7791, 43.3433]
+      },
+      "properties": {
+        "name": "Mostar",
+        "description": "Grad u Hercegovini poznat po tradiciji uzgoja nara."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [18.5931, 42.7087]
+      },
+      "properties": {
+        "name": "Trebinje",
+        "description": "Grad u istočnom dijelu Hercegovine sa povoljnim uvjetima za uzgoj nara."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [17.6813, 43.1462]
+      },
+      "properties": {
+        "name": "Čapljina",
+        "description": "Grad u jugozapadnom dijelu BiH, poznat po poljoprivredi, uključujući uzgoj nara."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [17.9925, 43.7174]
+      },
+      "properties": {
+        "name": "Stolac",
+        "description": "Grad u jugoistočnom dijelu Hercegovine, sa tradicijom uzgoja nara."
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [17.65, 42.64],
+          [17.80, 42.60],
+          [18.00, 42.65],
+          [18.10, 42.75],
+          [18.13, 42.90],
+          [18.12, 43.00],
+          [18.05, 43.10],
+          [17.95, 43.18],
+          [17.85, 43.25],
+          [17.75, 43.30],
+          [17.60, 43.28],
+          [17.55, 43.20],
+          [17.50, 43.05],
+          [17.52, 42.90],
+          [17.60, 42.75],
+          [17.65, 42.64]
+        ]]
+      },
+      "properties": {
+        "name": "Južna Hercegovina – Regija nara",
+        "description": "Nepravilna regija u Hercegovini (Mostar, Stolac, Trebinje) gde prirodno raste i uzgaja se nar (Punica granatum)."
+      }
+    }
+  ]
+}

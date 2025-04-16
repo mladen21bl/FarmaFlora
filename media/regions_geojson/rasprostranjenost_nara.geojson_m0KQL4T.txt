@@ -1,0 +1,24 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [17.6, 42.6],  
+            [18.2, 42.6],  
+            [18.2, 43.5],  
+            [17.6, 43.5],  
+            [17.6, 42.6]   
+          ]
+        ]
+      },
+      "properties": {
+        "name": "Hercegovina – Regija Nara",
+        "description": "Proširena regija u južnoj Hercegovini (Mostar, Trebinje, Stolac) poznata po uzgoju nara (Punica granatum)."
+      }
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [18.4131, 43.8563]
+      },
+      "properties": {
+        "name": "Sarajevo",
+        "description": "Ginkgo biloba posađena u parkovima, bolnicama i univerzitetskim prostorima u Sarajevu."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [17.8114, 44.7722]
+      },
+      "properties": {
+        "name": "Banja Luka",
+        "description": "Zasađena u gradskim parkovima i alejama u Banja Luci."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [18.6784, 44.5384]
+      },
+      "properties": {
+        "name": "Tuzla",
+        "description": "Prisutna u kampusu i gradskim zelenim površinama."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [17.8090, 43.3438]
+      },
+      "properties": {
+        "name": "Mostar",
+        "description": "Ginko stabla zasađena u centru Mostara i oko obrazovnih ustanova."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [17.9078, 44.2036]
+      },
+      "properties": {
+        "name": "Zenica",
+        "description": "Raste u urbanim parkovima u Zenici."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [15.8700, 44.8169]
+      },
+      "properties": {
+        "name": "Bihać",
+        "description": "Zasađena oko bolnice i u javnim prostorima."
+      }
+    }
+  ]
+}

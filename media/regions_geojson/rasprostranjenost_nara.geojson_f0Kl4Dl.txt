@@ -1,0 +1,24 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [17.75, 43.3],
+            [17.8, 43.3],
+            [17.8, 43.35],
+            [17.75, 43.35],
+            [17.75, 43.3]
+          ]
+        ]
+      },
+      "properties": {
+        "name": "Mostar Region",
+        "description": "Regija u Hercegovini gde se uzgaja nar."
+      }
+    }
+  ]
+}

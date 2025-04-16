@@ -103,6 +103,55 @@
     <p><strong>Droga:</strong> {{ plant.drug }}</p>
     <p><strong>Indikacije:</strong> {{ plant.indications }}</p>
 
+    <!-- Mapa ispod detalja biljke -->
+    <div id="map" style="height: 400px; max-width: 880px; margin: 30px auto; border: 2px solid #ccc; border-radius: 8px; z-index: 1;"></div>
+
+    <!-- Leaflet CSS i JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <script>
+    var map = L.map('map').setView([44.5, 17.0], 7);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors',
+        maxZoom: 18,
+    }).addTo(map);
+
+    // Definišite stil za geojson regije
+    var regionStyle = {
+        color: "#FF6347",  // boja linije
+        weight: 2,         // debljina linije
+        fillColor: "#FF6347",  // boja popunjavanja
+        fillOpacity: 0.4    // providnost (0.0 do 1.0)
+    };
+
+    // Iterirajte kroz sve regije i dodajte ih na mapu
+    {% for region in plant.regions.all %}
+        var regionGeoJson = "{{ region.geojson.url|escapejs }}";
+
+        fetch(regionGeoJson)
+        .then(response => response.json())
+        .then(data => {
+            if (data.type === "FeatureCollection" || data.type === "Feature") {
+                L.geoJSON(data, {
+                    style: regionStyle,
+                    onEachFeature: function (feature, layer) {
+                        if (feature.properties && feature.properties.name) {
+                            layer.bindPopup("Regija: " + feature.properties.name + "<br>" + feature.properties.description);
+                        }
+                    }
+                }).addTo(map);
+            }
+        })
+        .catch(error => {
+            console.error("Greška prilikom učitavanja GeoJSON:", error);
+        });
+    {% endfor %}
+</script>
+
+
+
     <form action="{% url 'delete_plant' pk=plant.pk %}" method="post">
         {% csrf_token %}
         <button type="submit" class="delete-button">Izbriši biljku</button>
