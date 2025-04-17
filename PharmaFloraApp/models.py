@@ -24,3 +24,17 @@ class Plant(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class ActiveCompound(models.Model):
+    plant = models.ForeignKey(Plant, on_delete=models.CASCADE, related_name="active_compounds")
+    name = models.CharField(max_length=100, verbose_name="Naziv supstance")
+    mol_file = models.FileField(upload_to='molecules/', verbose_name="MOL fajl")
+    description = models.TextField(blank=True, verbose_name="Opis supstance")
+
+    class Meta:
+        verbose_name = "Aktivna supstanca"
+        verbose_name_plural = "Aktivne supstance"
+
+    def __str__(self):
+        return f"{self.name} ({self.plant.name})"

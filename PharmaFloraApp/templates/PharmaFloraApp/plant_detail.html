@@ -3,18 +3,20 @@
 
 {% block content %}
 <style>
-    .plant-details {
-        font-family: 'Times New Roman', Times, serif;
-        background: url("{% static 'images/parchment_texture2.jpg' %}") no-repeat center center;
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        max-width: 880px;
-        margin: auto;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        position: relative;
-        z-index: 2;
-    }
+  .plant-details {
+  font-family: 'Times New Roman', Times, serif;
+  background: url("{% static 'images/parchment_texture2.jpg' %}") center center;
+  background-repeat: repeat-y;
+  background-size: 100% auto; /* Slika ide do vrha i širi se po širini */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  max-width: 880px;
+  margin: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 2;
+}
 
     .plant-details img {
         width: 15cm;
@@ -90,6 +92,38 @@
         background-color: #0056b3;
         text-decoration: none;
     }
+
+    .compound-card {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        margin-top: 20px;
+        padding: 15px;
+        border: 1px solid #ccc;
+        background-color: #fdf6e3;
+        border-radius: 8px;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+        overflow: hidden; /* Sprečava ispadanje */
+    }
+
+    .compound-viewer {
+    width: 26cm;
+    height: 300px;  
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    position: relative;
+    z-index: 2;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+
+
+
 </style>
 
 <div class="plant-details">
@@ -102,6 +136,31 @@
     <p><strong>Opis:</strong> {{ plant.description }}</p>
     <p><strong>Droga:</strong> {{ plant.drug }}</p>
     <p><strong>Indikacije:</strong> {{ plant.indications }}</p>
+    <h3>Aktivne supstance:</h3>
+
+    {% for compound in plant.active_compounds.all %}
+    <div class="compound-card">
+        <div class="compound-info">
+            <h4>{{ compound.name }}</h4>
+            <p>{{ compound.description }}</p>
+        </div>
+        <div class="compound-viewer" id="viewer{{ forloop.counter }}"></div>
+    </div>
+
+    <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+    <script>
+        let viewer{{ forloop.counter }} = $3Dmol.createViewer("viewer{{ forloop.counter }}", {backgroundColor: "white"});
+        fetch("{{ compound.mol_file.url }}")
+          .then(response => response.text())
+          .then(data => {
+            viewer{{ forloop.counter }}.addModel(data, "mol");
+            viewer{{ forloop.counter }}.setStyle({}, {stick:{}});
+            viewer{{ forloop.counter }}.zoomTo();
+            viewer{{ forloop.counter }}.render();
+          });
+    </script>
+    {% endfor %}
+
 
     <!-- Mapa ispod detalja biljke -->
     <div id="map" style="height: 400px; max-width: 880px; margin: 30px auto; border: 2px solid #ccc; border-radius: 8px; z-index: 1;"></div>
