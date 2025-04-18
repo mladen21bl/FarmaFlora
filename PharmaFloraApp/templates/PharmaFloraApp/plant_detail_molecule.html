@@ -1,0 +1,118 @@
+{% extends "PharmaFloraApp/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+  .plant-details {
+        font-family: 'Times New Roman', Times, serif;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        max-width: 880px;
+        margin: auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 2;
+    }
+
+
+    .back-link {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+        position: relative;
+    }
+
+    .back-link::before {
+        content: '\2190';
+        position: absolute;
+        left: 10px;
+    }
+
+    .back-link:hover {
+        background-color: #0056b3;
+        text-decoration: none;
+    }
+
+    .compound-card {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        margin-top: 20px;
+        padding: 15px;
+        border: 1px solid #ccc;
+        background-color: #fdf6e3;
+        border-radius: 8px;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+        overflow: hidden;
+        flex-wrap: wrap;
+    }
+
+    #h3 {
+      border: 1px solid #ccc;
+      background-color: #fdf6e3;
+    }
+
+    .compound-viewer {
+        width: 600px; /* Ili 100%, ili koliko god želiš */
+        max-width: 100%;
+        height: 400px; /* Malo više da se vidi ceo molekul */
+        border: 1px solid #aaa;
+        border-radius: 5px;
+        position: relative;
+        z-index: 2;
+        overflow: hidden;
+        margin-left: auto;
+        margin-right: auto;
+}
+
+    .compound-viewer img {
+        max-width: 100%; /* Ensure the image fits within the viewer */
+        height: auto;
+        object-fit: contain; /* Ensure entire molecule is visible */
+        display: block;
+        margin: 0 auto;
+    }
+</style>
+
+
+    <h3 id="h3">Aktivne supstance:</h3>
+
+    {% for compound in plant.active_compounds.all %}
+    <div class="compound-card">
+        <div class="compound-info">
+            <h4>{{ compound.name }}</h4>
+            <p>{{ compound.description }}</p>
+        </div>
+        <div class="compound-viewer" id="viewer{{ forloop.counter }}"></div>
+    </div>
+
+    <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+    <script>
+        let viewer{{ forloop.counter }} = $3Dmol.createViewer("viewer{{ forloop.counter }}", {backgroundColor: "#2c2c2c"});
+        fetch("{{ compound.mol_file.url }}")
+          .then(response => response.text())
+          .then(data => {
+            viewer{{ forloop.counter }}.addModel(data, "mol");
+            viewer{{ forloop.counter }}.setStyle({}, {stick:{}});
+            viewer{{ forloop.counter }}.zoomTo();
+            viewer{{ forloop.counter }}.spin(true);
+            viewer{{ forloop.counter }}.render();
+          });
+    </script>
+    {% endfor %}
+
+
+    <a href="{% url 'plant_detail' plant.pk %}" class="back-link">Nazad na opis</a>
+
+</div>
+{% endblock %}

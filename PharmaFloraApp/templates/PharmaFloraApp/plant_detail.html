@@ -126,6 +126,35 @@
         display: block;
         margin: 0 auto;
     }
+
+    .tab-button-form {
+    display: inline-block;
+    margin: 10px 0;
+}
+
+.tab-button {
+    background-color: #FB8C00; /* Narančasta */
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.tab-button:hover {
+    background-color: #FB8C00;
+}
+
+.tab-icon {
+    font-size: 20px;
+}
+
 </style>
 
 <div class="plant-details">
@@ -138,32 +167,12 @@
     <p><strong>Opis:</strong> {{ plant.description }}</p>
     <p><strong>Droga:</strong> {{ plant.drug }}</p>
     <p><strong>Indikacije:</strong> {{ plant.indications }}</p>
-    <h3>Aktivne supstance:</h3>
-
-    {% for compound in plant.active_compounds.all %}
-    <div class="compound-card">
-        <div class="compound-info">
-            <h4>{{ compound.name }}</h4>
-            <p>{{ compound.description }}</p>
-        </div>
-        <div class="compound-viewer" id="viewer{{ forloop.counter }}"></div>
-    </div>
-
-    <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
-    <script>
-        let viewer{{ forloop.counter }} = $3Dmol.createViewer("viewer{{ forloop.counter }}", {backgroundColor: "#2c2c2c"});
-        fetch("{{ compound.mol_file.url }}")
-          .then(response => response.text())
-          .then(data => {
-            viewer{{ forloop.counter }}.addModel(data, "mol");
-            viewer{{ forloop.counter }}.setStyle({}, {stick:{}});
-            viewer{{ forloop.counter }}.zoomTo();
-            viewer{{ forloop.counter }}.spin(true);
-            viewer{{ forloop.counter }}.render();
-          });
-    </script>
-    {% endfor %}
-
+    <form action="{% url 'plant_detail_molecule' pk=plant.pk %}" method="post" class="tab-button-form">
+        {% csrf_token %}
+        <button type="submit" class="tab-button">
+            <span class="tab-icon">💊</span> Aktivne supstance
+        </button>
+    </form>
 
     <!-- Mapa ispod detalja biljke -->
     <div id="map" style="height: 400px; max-width: 880px; margin: 30px auto; border: 2px solid #ccc; border-radius: 8px; z-index: 1;"></div>

@@ -140,13 +140,21 @@ def delete_all_plants(request):
     if request.method == 'POST':
         Plant.objects.all().delete()
         messages.success(request, 'Sve biljke su uspješno izbrisane.')
-        return redirect('index')  
+        return redirect('index')
 
     return render(request, 'PharmaFloraApp/delete_all_plants.html')
 
 def base(request):
     return render(request, 'PharmaFloraApp/base.html')
 
+
+
+def plant_detail_molecule(request, pk):
+    plant = get_object_or_404(Plant, pk=pk)
+    context = {
+        'plant': plant,
+    }
+    return render(request, 'PharmaFloraApp/plant_detail_molecule.html', context)
 
 
 def search_by_name(request):
