@@ -102,7 +102,7 @@
         position: relative;
         z-index: 2;
         overflow: hidden;
-        flex-wrap: wrap; 
+        flex-wrap: wrap;
     }
 
     .compound-viewer {
@@ -150,13 +150,14 @@
 
     <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
     <script>
-        let viewer{{ forloop.counter }} = $3Dmol.createViewer("viewer{{ forloop.counter }}", {backgroundColor: "white"});
+        let viewer{{ forloop.counter }} = $3Dmol.createViewer("viewer{{ forloop.counter }}", {backgroundColor: "#2c2c2c"});
         fetch("{{ compound.mol_file.url }}")
           .then(response => response.text())
           .then(data => {
             viewer{{ forloop.counter }}.addModel(data, "mol");
             viewer{{ forloop.counter }}.setStyle({}, {stick:{}});
             viewer{{ forloop.counter }}.zoomTo();
+            viewer{{ forloop.counter }}.spin(true);
             viewer{{ forloop.counter }}.render();
           });
     </script>
