@@ -4,32 +4,28 @@
 {% block content %}
 <style>
   .plant-details {
-  font-family: 'Times New Roman', Times, serif;
-  background: url("{% static 'images/parchment_texture2.jpg' %}") center center;
-  background-repeat: repeat-y;
-  background-size: 100% auto; /* Slika ide do vrha i širi se po širini */
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  max-width: 880px;
-  margin: auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  position: relative;
-  z-index: 2;
-}
+        font-family: 'Times New Roman', Times, serif;
+        background: url("{% static 'images/parchment_texture2.jpg' %}") center center;
+        background-repeat: repeat-y;
+        background-size: 100% auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        max-width: 880px;
+        margin: auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 2;
+    }
 
     .plant-details img {
-        width: 15cm;
-        height: 10cm;
-        object-fit: contain;
-        margin-bottom: 20px;
+        max-width: 100%; /* Ensure the image scales proportionally */
+        height: auto;
         border: 1px solid #ccc;
         border-radius: 5px;
         display: block;
-        margin-left: auto;
-        margin-right: auto;
+        margin: 20px auto;
     }
-
 
     .plant-details p {
         margin-bottom: 10px;
@@ -105,25 +101,30 @@
         align-items: center;
         position: relative;
         z-index: 2;
-        overflow: hidden; /* Sprečava ispadanje */
+        overflow: hidden;
+        flex-wrap: wrap; 
     }
 
     .compound-viewer {
-    width: 26cm;
-    height: 300px;  
-    border: 1px solid #aaa;
-    border-radius: 5px;
-    position: relative;
-    z-index: 2;
-    margin-left: auto;
-    margin-right: auto;
+        width: 600px; /* Ili 100%, ili koliko god želiš */
+        max-width: 100%;
+        height: 400px; /* Malo više da se vidi ceo molekul */
+        border: 1px solid #aaa;
+        border-radius: 5px;
+        position: relative;
+        z-index: 2;
+        overflow: hidden;
+        margin-left: auto;
+        margin-right: auto;
 }
 
-
-
-
-
-
+    .compound-viewer img {
+        max-width: 100%; /* Ensure the image fits within the viewer */
+        height: auto;
+        object-fit: contain; /* Ensure entire molecule is visible */
+        display: block;
+        margin: 0 auto;
+    }
 </style>
 
 <div class="plant-details">

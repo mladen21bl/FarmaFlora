@@ -63,7 +63,7 @@
       {% for plant in page_obj %}
           <li>
               {% if plant.image %}
-                  <img src="{{ plant.image.url }}" alt="{{ plant.name }}">
+                  <a href="{% url 'plant_detail' plant.pk %}" class="plant-name"><img src="{{ plant.image.url }}" alt="{{ plant.name }}"></a>
               {% endif %}
               <h2 class="text-3xl font-handwriting text-green-800 mt-4">
                   <a href="{% url 'plant_detail' plant.pk %}" class="plant-name">{{ plant.name }}</a>
@@ -264,7 +264,7 @@
 }
 
 .current strong {
-    font-size: 36px; 
+    font-size: 36px;
     font-weight: bold;
     color: #3d6e54;
 }
