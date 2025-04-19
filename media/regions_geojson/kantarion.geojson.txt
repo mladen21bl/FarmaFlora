@@ -1,0 +1,99 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [16.00, 44.80],
+          [16.50, 44.70],
+          [17.00, 44.80],
+          [17.20, 45.00],
+          [16.80, 45.20],
+          [16.30, 45.10],
+          [16.00, 44.80]
+        ]]
+      },
+      "properties": {
+        "name": "Krajina",
+        "description": "Zapadna Bosna – područje oko Bihaća, Cazina i Ključa, s bogatom florom na livadama i proplancima."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [17.50, 43.10],
+          [18.00, 43.00],
+          [18.30, 43.20],
+          [18.40, 43.50],
+          [18.10, 43.70],
+          [17.70, 43.60],
+          [17.50, 43.10]
+        ]]
+      },
+      "properties": {
+        "name": "Hercegovina",
+        "description": "Južna regija – područje Mostara, Širokog Brijega i Stoca, poznata po suhim i sunčanim staništima pogodnim za kantarion."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [17.30, 44.00],
+          [17.80, 43.90],
+          [18.00, 44.10],
+          [17.90, 44.40],
+          [17.50, 44.50],
+          [17.30, 44.00]
+        ]]
+      },
+      "properties": {
+        "name": "Srednja Bosna",
+        "description": "Područje Travnika, Bugojna i Viteza, s kombinacijom šumskih i otvorenih prostora pogodnih za rast kantariona."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [19.00, 43.20],
+          [19.30, 43.10],
+          [19.50, 43.30],
+          [19.40, 43.60],
+          [19.10, 43.70],
+          [18.90, 43.50],
+          [19.00, 43.20]
+        ]]
+      },
+      "properties": {
+        "name": "Istočna Bosna",
+        "description": "Regija oko Foče, Goražda i Rogatice, s bogatim biljnim svijetom na sunčanim obroncima."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [19.00, 44.30],
+          [19.30, 44.20],
+          [19.50, 44.40],
+          [19.40, 44.70],
+          [19.10, 44.80],
+          [18.90, 44.60],
+          [19.00, 44.30]
+        ]]
+      },
+      "properties": {
+        "name": "Podrinje",
+        "description": "Područje oko Zvornika i Bratunca, s livadama i šumskim rubovima bogatim kantarionom."
+      }
+    }
+  ]
+}

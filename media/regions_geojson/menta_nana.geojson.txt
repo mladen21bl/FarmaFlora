@@ -1,0 +1,100 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [15.60, 44.70],
+          [15.80, 44.60],
+          [16.10, 44.70],
+          [16.30, 44.80],
+          [16.00, 44.90],
+          [15.70, 44.80],
+          [15.60, 44.70]
+        ]]
+      },
+      "properties": {
+        "name": "Krajina",
+        "description": "Regija zapadnog dijela Bosne, oko Bihaća i Cazina, gdje raste menta u vlažnim predjelima, uz rijeke i u poljima."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [16.70, 43.90],
+          [16.90, 43.80],
+          [17.10, 43.90],
+          [17.30, 44.00],
+          [17.00, 44.10],
+          [16.80, 44.00],
+          [16.70, 43.90]
+        ]]
+      },
+      "properties": {
+        "name": "Hercegovina",
+        "description": "Područja oko Mostara, Širokog Brijega i Stoca, pogodna za uzgoj mente u vlažnim šumama i uz rijeke."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [17.30, 43.80],
+          [17.50, 43.70],
+          [17.70, 43.80],
+          [17.90, 43.90],
+          [17.60, 44.00],
+          [17.40, 43.90],
+          [17.30, 43.80]
+        ]]
+      },
+      "properties": {
+        "name": "Srednja Bosna",
+        "description": "Područja uz rijeke i vlažna područja u okolini Travnika, Zenice i Kaknja, pogodna za rast mente."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [18.30, 43.50],
+          [18.50, 43.40],
+          [18.70, 43.60],
+          [18.90, 43.70],
+          [18.60, 43.80],
+          [18.40, 43.60],
+          [18.30, 43.50]
+        ]]
+      },
+      "properties": {
+        "name": "Podrinje",
+        "description": "Regija uz rijeku Drinu, gdje menta raste uz vodene tokove i u vlažnim predjelima."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [17.50, 44.00],
+          [17.70, 43.90],
+          [17.90, 44.10],
+          [17.70, 44.30],
+          [17.50, 44.20],
+          [17.40, 44.10],
+          [17.50, 44.00]
+        ]]
+      },
+      "properties": {
+        "name": "Istočna Bosna",
+        "description": "Područje oko Foče, Goražda i Rogatice, gdje menta prirodno raste u šumama i uz rijeke."
+      }
+    }
+  ]
+}

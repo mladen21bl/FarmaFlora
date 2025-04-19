@@ -1,0 +1,82 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [15.70, 44.80],
+          [16.00, 44.70],
+          [16.50, 44.80],
+          [16.80, 44.90],
+          [16.60, 45.10],
+          [16.20, 45.00],
+          [15.80, 44.90],
+          [15.70, 44.80]
+        ]]
+      },
+      "properties": {
+        "name": "Krajina",
+        "description": "Regija zapadnog dijela Bosne i Hercegovine, pogodna za rast Tilia cordata u šumama i uz rijeke."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [17.50, 43.10],
+          [17.80, 43.00],
+          [18.10, 43.20],
+          [18.30, 43.40],
+          [18.00, 43.60],
+          [17.70, 43.50],
+          [17.50, 43.10]
+        ]]
+      },
+      "properties": {
+        "name": "Hercegovina",
+        "description": "Sunčana područja oko Mostara, Širokog Brijega i Stoca, pogodna za uzgoj lipa u parkovima i šumama."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [17.00, 44.10],
+          [17.40, 44.00],
+          [17.70, 44.20],
+          [17.90, 44.40],
+          [17.60, 44.50],
+          [17.30, 44.40],
+          [17.00, 44.10]
+        ]]
+      },
+      "properties": {
+        "name": "Srednja Bosna",
+        "description": "Područja oko Travnika i Bugojna, pogodno za rast lipa u šumskim predjelima."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [18.90, 43.40],
+          [19.20, 43.30],
+          [19.40, 43.50],
+          [19.10, 43.70],
+          [18.80, 43.60],
+          [18.70, 43.50],
+          [18.90, 43.40]
+        ]]
+      },
+      "properties": {
+        "name": "Podrinje",
+        "description": "Obalu rijeke Drine, područja oko Zvornika i Bratunca, pogodno za rast lipa."
+      }
+    }
+  ]
+}
