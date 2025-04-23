@@ -1,6 +1,6 @@
 {% extends 'PharmaFloraApp/base.html' %}
-<!DOCTYPE html>
 {% load static %}
+
 {% block title %}Pretraga Biljaka{% endblock %}
 
 {% block content %}
@@ -17,6 +17,7 @@
 
         #search-form {
             margin-top: 3cm;
+            text-align: center;
         }
 
         ul#plant-list {
@@ -27,56 +28,56 @@
             gap: 30px;
             max-width: 700px;
             margin: 0 auto;
+            display: none; /* Initially hide the plant list */
         }
 
         li.plant-item {
-            background: url("{% static 'images/parchment_texture2.jpg' %}") no-repeat center center;
-            background-size: cover;
-            padding: 60px;
-            border-radius: 20px;
-            text-align: center;
-            border: none;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-            opacity: 0.95;
-        }
+    background: url("{% static 'images/parchment_texture2.jpg' %}") no-repeat center center;
+    background-size: cover;
+    padding: 60px;
+    border-radius: 20px;
+    text-align: center; /* Već postoji — osigurava centriranje teksta */
+    border: none;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    opacity: 0.95;
 
-        .plant-item img {
-          width: 7cm;
-          height: 7cm;
-          object-fit: contain;
-          background-color: transparent; /* Uklanjanje bilo koje pozadinske boje */
-          border: none; /* Potpuno uklanjanje okvira */
-          border-radius: 3px;
-          box-shadow: none; /* Uklanjanje sjenke oko slike */
-          margin: 0 auto;
+    /* Dodato: koristi flexbox da centriramo sve vertikalno i horizontalno */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
+.plant-item img {
+    width: 7cm;
+    height: 7cm;
+    object-fit: contain;
+    background-color: transparent;
+    border: none;
+    border-radius: 3px;
+    box-shadow: none;
+    margin-bottom: 20px; /* dodatni razmak ispod slike */
+}
 
-        .plant-item a {
-            font-family: 'Aniron', serif;
-            font-size: 1.7rem;
-            font-weight: bold;
-            color: #2e4d30;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 0, 0, 0.2);
-            letter-spacing: 1px;
-            line-height: 1.4;
-            text-transform: capitalize;
-            text-decoration: none;
-        }
+.plant-item h2 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
 
-        .plant-item a:hover {
-            text-decoration: underline;
-        }
+.plant-item .latin-name {
+    display: block;
+    margin-top: 5px;
+    font-family: "Times New Roman";
+    font-style: italic;
+    color: black;
+    font-size: 1.2rem;
+}
 
-        .plant-item .latin-name {
-            font-family: "Times New Roman";
-            font-style: italic;
-            color: black;
-            font-size: 1.2rem;
         }
     </style>
 
-    <form id="search-form" style="margin-bottom: 20px; text-align: center;">
+    <form id="search-form" style="margin-bottom: 20px;">
         <input type="text" name="q" placeholder="Pretraga po imenu biljke"
                style="padding: 10px; width: 300px; border-radius: 5px; border: 1px solid #ccc; font-size: 16px;"
                id="search-input">
@@ -94,14 +95,15 @@
     <ul id="plant-list">
         {% for plant in plants %}
             <li class="plant-item">
-              <a href="{% url 'plant_detail' plant.pk %}">
-                {% if plant.image %}
-                    <img src="{{ plant.image.url }}" alt="{{ plant.name }}">
-                {% endif %}
-                <h2 class="text-3xl text-green-800 mt-4">
-                    {{ plant.name }}</a>
-                    <span class="latin-name">({{ plant.latin_name }})</span>
-                </h2>
+                <a href="{% url 'plant_detail' plant.pk %}">
+                    {% if plant.image %}
+                        <img src="{{ plant.image.url }}" alt="{{ plant.name }}">
+                    {% endif %}
+                    <h2 class="text-3xl text-green-800 mt-4">
+                        {{ plant.name }}
+                        <span class="latin-name">({{ plant.latin_name }})</span>
+                    </h2>
+                </a>
             </li>
         {% empty %}
             <li style="text-align:center;">Nema biljaka za prikaz.</li>
@@ -124,18 +126,19 @@
 
             function filterPlants() {
                 const query = searchInput.value.toLowerCase();
-                const plants = plantList.getElementsByTagName('li');
+                const plants = document.querySelectorAll('#plant-list .plant-item');
+
                 let hasResults = false;
 
-                for (let i = 0; i < plants.length; i++) {
-                    const plantName = plants[i].getElementsByTagName('h2')[0].innerText.toLowerCase();
+                plants.forEach(function (plant) {
+                    const plantName = plant.querySelector('h2').innerText.toLowerCase();
                     if (plantName.includes(query)) {
-                        plants[i].style.display = '';
+                        plant.style.display = 'flex';
                         hasResults = true;
                     } else {
-                        plants[i].style.display = 'none';
+                        plant.style.display = 'none';
                     }
-                }
+                });
 
                 if (query && hasResults) {
                     plantList.style.display = 'flex';
