@@ -94,11 +94,12 @@
     <ul id="plant-list">
         {% for plant in plants %}
             <li class="plant-item">
+              <a href="{% url 'plant_detail' plant.pk %}">
                 {% if plant.image %}
                     <img src="{{ plant.image.url }}" alt="{{ plant.name }}">
                 {% endif %}
                 <h2 class="text-3xl text-green-800 mt-4">
-                    <a href="{% url 'plant_detail' plant.pk %}">{{ plant.name }}</a>
+                    {{ plant.name }}</a>
                     <span class="latin-name">({{ plant.latin_name }})</span>
                 </h2>
             </li>

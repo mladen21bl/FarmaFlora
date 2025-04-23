@@ -5,27 +5,59 @@
         background-color: white;
         padding: 20px;
         min-height: 100vh;
+        font-family: "Segoe UI", sans-serif;
     }
 
-    .compound-card a {
+    .compound-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 20px;
+    }
+
+    .compound-link {
+        padding: 12px 20px;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        background-color: #f8f9fa;
+        transition: background-color 0.2s, box-shadow 0.2s;
+        font-weight: 500;
+        color: #003366;
+        text-decoration: none;
+    }
+
+    .compound-link:hover {
+        background-color: #e2e6ea;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        text-decoration: none;
+    }
+
+    .back-link {
+        margin-top: 30px;
         display: inline-block;
-        margin-bottom: 10px;
+        text-decoration: none;
+        color: #0069d9;
+        font-weight: bold;
+    }
+
+    .back-link:hover {
+        text-decoration: underline;
     }
 </style>
 
 <div class="white-background-wrapper">
     <div class="plant-details">
-        <h2>Aktivne supstance za biljku: {{ plant.name }}</h2>
-        {% for compound in compounds %}
-            <div class="compound-card">
-                <a href="{% url 'active_compound_detail' plant.pk compound.pk %}" class="tab-button">
+        <h2>Aktivne supstance – {{ plant.name }}</h2>
+        <div class="compound-list">
+            {% for compound in compounds %}
+                <a href="{% url 'active_compound_detail' plant.pk compound.pk %}" class="compound-link">
                     {{ compound.name }}
                 </a>
-            </div>
-        {% empty %}
-            <p>Nema registrovanih aktivnih supstanci za ovu biljku.</p>
-        {% endfor %}
-        <a href="{% url 'plant_detail' plant.pk %}" class="back-link">Nazad na biljku</a>
+            {% empty %}
+                <p>Nema registrovanih aktivnih supstanci za ovu biljku.</p>
+            {% endfor %}
+        </div>
+        <a href="{% url 'plant_detail' plant.pk %}" class="back-link">⟵ Nazad na biljku</a>
     </div>
 </div>
 {% endblock %}
