@@ -13,4 +13,7 @@ urlpatterns = [
     path('search_by_name/', views.search_by_name, name='search_by_name'),
     path('edit_plant/<int:pk>/', views.edit_plant, name='edit_plant'),
     path('plant/<int:pk>/molecule', views.plant_detail_molecule, name='plant_detail_molecule'),
+    path('plants/<int:pk>/compounds/', views.compound_list_by_plant, name='compound_list_by_plant'),
+    path('plant/<int:pk>/active_compound/<int:compound_pk>/', views.active_compound_detail, name='active_compound_detail'),
+
 ]

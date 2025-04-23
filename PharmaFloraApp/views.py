@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from .models import Plant
+from .models import Plant, ActiveCompound
 from .forms import PlantForm
 from django.core.paginator import Paginator
 from django.contrib import messages
@@ -156,6 +156,23 @@ def plant_detail_molecule(request, pk):
     }
     return render(request, 'PharmaFloraApp/plant_detail_molecule.html', context)
 
+def compound_list_by_plant(request, pk):
+    plant = get_object_or_404(Plant, pk=pk)
+    compounds = plant.active_compounds.all()
+    context = {
+        'plant': plant,
+        'compounds': compounds,
+    }
+    return render(request, 'PharmaFloraApp/compound_list.html', context)
+
+def active_compound_detail(request, pk, compound_pk):
+    plant = get_object_or_404(Plant, pk=pk)
+    compound = get_object_or_404(ActiveCompound, pk=compound_pk)
+    context = {
+        'plant': plant,
+        'compound': compound,
+    }
+    return render(request, 'PharmaFloraApp/active_compound_detail.html', context)
 
 def search_by_name(request):
     query = request.GET.get('q')

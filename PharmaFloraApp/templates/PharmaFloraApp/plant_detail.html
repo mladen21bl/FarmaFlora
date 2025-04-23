@@ -167,7 +167,7 @@
     <p><strong>Opis:</strong> {{ plant.description }}</p>
     <p><strong>Droga:</strong> {{ plant.drug }}</p>
     <p><strong>Indikacije:</strong> {{ plant.indications }}</p>
-    <form action="{% url 'plant_detail_molecule' pk=plant.pk %}" method="post" class="tab-button-form">
+    <form action="{% url 'compound_list_by_plant' plant.pk %}" method="post" class="tab-button-form">
         {% csrf_token %}
         <button type="submit" class="tab-button">
             <span class="tab-icon">💊</span> Aktivne supstance

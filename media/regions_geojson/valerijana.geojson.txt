@@ -1,0 +1,96 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [19.00, 44.70],
+          [19.30, 44.60],
+          [19.40, 44.80],
+          [19.10, 44.90],
+          [18.90, 44.80],
+          [19.00, 44.70]
+        ]]
+      },
+      "properties": {
+        "name": "Semberija",
+        "description": "Plodne ravnice oko Bijeljine i Janje, pogodna područja za rast valerijane u vlažnim livadama i šumskim rubovima."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [18.60, 45.00],
+          [18.90, 44.90],
+          [19.10, 45.10],
+          [18.80, 45.20],
+          [18.50, 45.10],
+          [18.60, 45.00]
+        ]]
+      },
+      "properties": {
+        "name": "Posavina",
+        "description": "Oblast oko Brčkog i Orašja, gdje se nalazi vlažna staništa pogodna za rast valerijane."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [18.00, 44.70],
+          [18.30, 44.60],
+          [18.50, 44.80],
+          [18.20, 44.90],
+          [17.90, 44.80],
+          [18.00, 44.70]
+        ]]
+      },
+      "properties": {
+        "name": "Sjeverna Bosna",
+        "description": "Područja oko Gradačca, Modriče i Doboja, koja imaju odgovarajuće uvjete za rast valerijane u vlažnim livadama."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [17.70, 44.50],
+          [18.00, 44.40],
+          [18.20, 44.60],
+          [17.90, 44.70],
+          [17.60, 44.60],
+          [17.70, 44.50]
+        ]]
+      },
+      "properties": {
+        "name": "Srednja Bosna",
+        "description": "Regije kao što su Tešanj, Žepče i Maglaj, poznate po plodnim područjima koja mogu podržati rast valerijane."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [17.30, 43.10],
+          [17.60, 43.00],
+          [17.90, 43.20],
+          [18.10, 43.40],
+          [17.80, 43.50],
+          [17.50, 43.30],
+          [17.30, 43.10]
+        ]]
+      },
+      "properties": {
+        "name": "Hercegovina (plodne doline)",
+        "description": "Navodnjavana područja oko Ljubuškog, Čapljine i Mostara, pogodna za rast valerijane."
+      }
+    }
+  ]
+}

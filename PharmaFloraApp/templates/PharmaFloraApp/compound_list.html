@@ -1,0 +1,31 @@
+{% extends "PharmaFloraApp/base.html" %}
+{% block content %}
+<style>
+    .white-background-wrapper {
+        background-color: white;
+        padding: 20px;
+        min-height: 100vh;
+    }
+
+    .compound-card a {
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+</style>
+
+<div class="white-background-wrapper">
+    <div class="plant-details">
+        <h2>Aktivne supstance za biljku: {{ plant.name }}</h2>
+        {% for compound in compounds %}
+            <div class="compound-card">
+                <a href="{% url 'active_compound_detail' plant.pk compound.pk %}" class="tab-button">
+                    {{ compound.name }}
+                </a>
+            </div>
+        {% empty %}
+            <p>Nema registrovanih aktivnih supstanci za ovu biljku.</p>
+        {% endfor %}
+        <a href="{% url 'plant_detail' plant.pk %}" class="back-link">Nazad na biljku</a>
+    </div>
+</div>
+{% endblock %}
