@@ -48,6 +48,30 @@
     .back-link:hover {
         background-color: #0056b3;
     }
+
+    .compound-info-table {
+        width: 100%;
+        margin-top: 30px;
+        border-collapse: collapse;
+    }
+
+    .compound-info-table th, .compound-info-table td {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+    .compound-info-table th {
+        background-color: #f4f4f4;
+    }
+
+    .compound-info-table td {
+        background-color: #fafafa;
+    }
+
+    .compound-info-table tr:nth-child(even) td {
+        background-color: #f9f9f9;
+    }
 </style>
 
 <div class="compound-container">
@@ -69,6 +93,29 @@
                 viewer.render();
             });
     </script>
+
+    <table class="compound-info-table">
+        <tr>
+            <th>Molekulska formula</th>
+            <td>{{ compound.molecular_formula }}</td>
+        </tr>
+        <tr>
+            <th>IUPAC naziv</th>
+            <td>{{ compound.iupac_name }}</td>
+        </tr>
+        <tr>
+            <th>Strukturna klasa</th>
+            <td>{{ compound.structure_class }}</td>
+        </tr>
+        <tr>
+            <th>Log P</th>
+            <td>{{ compound.log_p }}</td>
+        </tr>
+        <tr>
+            <th>Rastvorljivost</th>
+            <td>{{ compound.solubility }}</td>
+        </tr>
+    </table>
 
     <a href="{% url 'compound_list_by_plant' compound.plant.pk %}" class="back-link">Nazad na listu supstanci</a>
 </div>

@@ -23,4 +23,4 @@ class PlantForm(forms.ModelForm):
 class ActiveCompoundForm(forms.ModelForm):
     class Meta:
         model = ActiveCompound
-        fields = ['plant', 'name', 'mol_file', 'description']
+        fields = ['plant', 'name', 'mol_file', 'iupac_name', 'description', 'molecular_formula', 'solubility', 'structure_class']
