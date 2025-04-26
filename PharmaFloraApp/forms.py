@@ -23,4 +23,14 @@ class PlantForm(forms.ModelForm):
 class ActiveCompoundForm(forms.ModelForm):
     class Meta:
         model = ActiveCompound
-        fields = ['plant', 'name', 'mol_file', 'iupac_name', 'description', 'molecular_formula', 'solubility', 'structure_class']
+        fields = ['plants', 'name', 'mol_file', 'iupac_name', 'description', 'molecular_formula', 'solubility', 'structure_class']
+        widgets = {
+            'plants': forms.CheckboxSelectMultiple(attrs={'class': 'form-control'}),
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'mol_file': forms.ClearableFileInput(attrs={'class': 'form-control-file'}),
+            'iupac_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'molecular_formula': forms.TextInput(attrs={'class': 'form-control'}),
+            'solubility': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'structure_class': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+        }

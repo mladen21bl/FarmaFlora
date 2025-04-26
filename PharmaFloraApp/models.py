@@ -31,15 +31,15 @@ from django.db import models
 from django.db import models
 
 class ActiveCompound(models.Model):
-    plant = models.ForeignKey(
+    # promenjeno iz ForeignKey u ManyToManyField
+    plants = models.ManyToManyField(
         'Plant',
-        on_delete=models.CASCADE,
-        related_name="active_compounds"
+        related_name="active_compounds",
+        verbose_name="Biljke"
     )
     name = models.CharField(max_length=100, verbose_name="Naziv supstance")
     mol_file = models.FileField(upload_to='molecules/', verbose_name="MOL fajl")
     description = models.TextField(blank=True, verbose_name="Opis supstance")
-
     molecular_formula = models.CharField(
         max_length=50,
         verbose_name="Molekulska formula",
@@ -73,4 +73,4 @@ class ActiveCompound(models.Model):
         verbose_name_plural = "Aktivne supstance"
 
     def __str__(self):
-        return f"{self.name} ({self.plant.name})"
+        return f"{self.name} ({', '.join([plant.name for plant in self.plants.all()])})"
