@@ -1,0 +1,93 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [18.55, 44.90],
+          [18.80, 44.90],
+          [18.80, 45.00],
+          [18.55, 45.00],
+          [18.55, 44.90]
+        ]]
+      },
+      "properties": {
+        "name": "Posavina",
+        "description": "Nizinska područja uz rijeku Savu, oko Brčkog i Orašja, pogodna za rast bijele vrbe na poplavnim terenima."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [18.00, 44.20],
+          [18.30, 44.10],
+          [18.50, 44.30],
+          [18.30, 44.50],
+          [18.00, 44.40],
+          [18.00, 44.20]
+        ]]
+      },
+      "properties": {
+        "name": "Dolina rijeke Bosne",
+        "description": "Područje između Zenice i Doboja uz rijeku Bosnu, sa vlažnim zemljištima pogodnim za rast bijele vrbe."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [19.00, 44.10],
+          [19.30, 44.00],
+          [19.50, 44.20],
+          [19.20, 44.40],
+          [19.00, 44.30],
+          [19.00, 44.10]
+        ]]
+      },
+      "properties": {
+        "name": "Dolina Drine",
+        "description": "Područje uz rijeku Drinu, naročito oko Bijeljine, Zvornika i Goražda, karakteristično za bijelu vrbu."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [17.10, 44.90],
+          [17.40, 44.80],
+          [17.60, 45.00],
+          [17.30, 45.10],
+          [17.10, 44.90]
+        ]]
+      },
+      "properties": {
+        "name": "Dolina Vrbasa",
+        "description": "Nizvodno područje od Banja Luke prema sjeveru, uz rijeku Vrbas, idealno stanište za bijelu vrbu."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [17.00, 43.70],
+          [17.30, 43.60],
+          [17.50, 43.80],
+          [17.20, 44.00],
+          [17.00, 43.90],
+          [17.00, 43.70]
+        ]]
+      },
+      "properties": {
+        "name": "Livanjsko polje",
+        "description": "Veliko kraško polje koje se povremeno plavi, stvarajući uvjete za rast bijele vrbe."
+      }
+    }
+  ]
+}

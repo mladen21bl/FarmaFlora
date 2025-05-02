@@ -3,6 +3,17 @@
 
 {% block content %}
 <style>
+  .plant-name {
+      font-family: 'Aniron', 'Aniron', serif !important;
+      font-size: 1.7rem !important;
+      font-weight: bold;
+      color: #2e4d30 !important;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 0, 0, 0.2);
+      letter-spacing: 1px;
+      line-height: 1.4;
+      text-transform: capitalize;
+      text-align: center;
+  }
   .plant-details {
         font-family: 'Times New Roman', Times, serif;
         background: url("{% static 'images/parchment_texture2.jpg' %}") center center;
@@ -29,13 +40,18 @@
 
 
     .plant-details p {
-        margin-bottom: 10px;
-        line-height: 1.6;
-    }
+    margin-bottom: 10px;
+    line-height: 1.6;
+    font-size: 1.25rem;
+    color: #2d3522;
+}
 
-    .plant-details strong {
-        font-weight: bold;
-    }
+
+.plant-details p strong {
+color: #000;
+font-weight: bold;
+}
+
 
     .delete-button {
         background-color: #d9534f;
@@ -158,6 +174,7 @@
 </style>
 
 <div class="plant-details">
+  <p class="plant-name">{{ plant.name }}</p>
     {% if plant.image %}
         <img src="{{ plant.image.url }}" alt="{{ plant.name }}">
     {% else %}

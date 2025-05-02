@@ -1,0 +1,120 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [17.176, 44.755],
+            [17.200, 44.755],
+            [17.220, 44.770],
+            [17.220, 44.790],
+            [17.200, 44.805],
+            [17.176, 44.805],
+            [17.155, 44.790],
+            [17.155, 44.770],
+            [17.176, 44.755]
+          ]
+        ]
+      },
+      "properties": {
+        "name": "Banja Luka",
+        "description": "Regija koja obuhvata centar Banjaluke, parkove i univerzitetsku zonu gdje se sadi Ginkgo biloba."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [18.38, 43.83],
+            [18.43, 43.83],
+            [18.46, 43.85],
+            [18.46, 43.88],
+            [18.43, 43.90],
+            [18.38, 43.90],
+            [18.35, 43.88],
+            [18.35, 43.85],
+            [18.38, 43.83]
+          ]
+        ]
+      },
+      "properties": {
+        "name": "Sarajevo",
+        "description": "Regija unutar Sarajeva gdje se nalazi više ginkgo stabala – parkovi, fakulteti, bolnice."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [17.78, 44.76],
+            [17.84, 44.76],
+            [17.86, 44.78],
+            [17.86, 44.80],
+            [17.84, 44.82],
+            [17.78, 44.82],
+            [17.76, 44.80],
+            [17.76, 44.78],
+            [17.78, 44.76]
+          ]
+        ]
+      },
+      "properties": {
+        "name": "Banja Luka – centar",
+        "description": "Regija sa urbanim sadnicama Ginkgo bilobe – centar grada i parkovi."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [18.66, 44.52],
+            [18.70, 44.52],
+            [18.72, 44.54],
+            [18.72, 44.56],
+            [18.70, 44.58],
+            [18.66, 44.58],
+            [18.64, 44.56],
+            [18.64, 44.54],
+            [18.66, 44.52]
+          ]
+        ]
+      },
+      "properties": {
+        "name": "Tuzla",
+        "description": "Gradski centar Tuzle i kampus sa zasađenim ginko stablima."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [17.79, 43.33],
+            [17.83, 43.33],
+            [17.85, 43.35],
+            [17.85, 43.37],
+            [17.83, 43.39],
+            [17.79, 43.39],
+            [17.77, 43.37],
+            [17.77, 43.35],
+            [17.79, 43.33]
+          ]
+        ]
+      },
+      "properties": {
+        "name": "Mostar",
+        "description": "Urbanizovana zona Mostara sa prisutnim ginkom u parkovima i oko škola."
+      }
+    }
+  ]
+}
